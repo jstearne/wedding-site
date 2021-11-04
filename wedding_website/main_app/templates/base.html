@@ -18,6 +18,12 @@
     <div class="navbar-menu navbar-end">
         <span class="navbar-item">Logged in as: {{user.username}}</span><br>
         <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
+        <ul>
+            <li><a class="navbar-item" href="{% url 'guestbook' %}">Guestbook</a></li>
+            <li><a class="navbar-item" href="{% url 'schedule' %}">Schedule</a></li>
+            <li><a class="navbar-item" href="{% url 'accommodations' %}">Accommodations</a></li>
+            <li><a class="navbar-item" href="{% url 'photos' %}">Photos</a></li>
+        </ul>
     </div>
 {% else %}
     <div class="navbar-menu navbar-end">

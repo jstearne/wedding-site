@@ -37,18 +37,23 @@ class Login(TemplateView):
     template_name = "login.html"
 
 
-
+@method_decorator(login_required, name='dispatch') # block access if not registered
 class Guestbook(TemplateView): #needs to be refactored into CRUD
     template_name = "guestbook.html"
 
 
+@method_decorator(login_required, name='dispatch') # block access if not registered
 class Accommodations(TemplateView): # good as is
     template_name = "accommodations.html"
 
 
+@method_decorator(login_required, name='dispatch') # block access if not registered
 class Schedule(TemplateView): #  good as is
     template_name = "schedule.html"
 
 
+@method_decorator(login_required, name='dispatch') # block access if not registered
 class Photos(TemplateView): # good as is
     template_name = "photos.html"
+
+
