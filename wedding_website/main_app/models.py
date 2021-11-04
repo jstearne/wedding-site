@@ -12,6 +12,8 @@ class Guest(models.Model):
     display_name = models.CharField(max_length=256, default='anonymous')
     rsvp = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.user.username
 
 class Post(models.Model):
     title: models.CharField(max_length=150)
@@ -19,3 +21,9 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     image = ImageField(upload_to='media/')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['created_at']
