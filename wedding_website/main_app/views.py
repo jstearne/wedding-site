@@ -1,6 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
+from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
+
+# at top of file with other imports
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+# Auth
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 class Home(TemplateView):
@@ -9,11 +17,29 @@ class Home(TemplateView):
 class Guestbook(TemplateView): #needs to be refactored into CRUD
     template_name = "guestbook.html"
 
-class Accomodations(TemplateView): # good as is
-    template_name = "accomodations.html"
+class Accommodations(TemplateView): # good as is
+    template_name = "accommodations.html"
 
 class Schedule(TemplateView): #  good as is
     template_name = "schedule.html"
 
 class Photos(TemplateView): # good as is
     template_name = "photos.html"
+
+class Signup(View):
+        # show a form to fill out
+    def get(self, request):
+        form = UserCreationForm()
+        context = {"form": form}
+        return render(request, "registration/signup.html", context)
+    # on form submit validate the form and login the user.
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("guestbook")
+        else:
+            context = {"form": form}
+            return render(request, "registration/signup.html", context)
+
