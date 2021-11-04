@@ -15,6 +15,7 @@ class Guest(models.Model):
     def __str__(self):
         return self.user.username
 
+
 class Post(models.Model):
     title: models.CharField(max_length=150)
     body: models.TextField(max_length=999)
@@ -27,3 +28,5 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['created_at']
+
+

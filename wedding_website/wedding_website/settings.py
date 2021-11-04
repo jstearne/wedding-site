@@ -131,5 +131,5 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # SET ME LAST!
-# LOGIN_REDIRECT_URL = '/artists/'
-# LOGOUT_REDIRECT_URL = 'https://myflexspace.herokuapp.com/'
+# LOGIN_REDIRECT_URL = '/guestbook/'
+# LOGOUT_REDIRECT_URL = '/'
