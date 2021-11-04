@@ -24,3 +24,8 @@ An authenticated user should be able to view the accomodations page
 An authenticated user should be able to view the schedule page
 
 An authenticated user should be able to email me (link in nav)
+
+
+# Figma link
+https://www.figma.com/file/J7vbI1CERgY6CZZwCYGhej/Wedding-Website
+
