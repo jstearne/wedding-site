@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nav Bar</title>
-</head>
-<body>
-    BASE NAV BAR
 
 {% if user.is_authenticated %}
     <div class="navbar-menu navbar-end">
         <span class="navbar-item">Welcome: {{user.username}}</span>
-        <a class="navbar-item" href="{% url 'guestbook' %}">Artists</a>
+        <a class="navbar-item" href="/artists">Artists</a>
         <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
     </div>
 {% else %}
     <div class="navbar-menu navbar-end">
        <a class="navbar-item" href="{% url 'login' %}">Log In</a>
-       <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+        <!--   here is our new link      -->
+       <a class="navbar-item" href="{% url 'signup' %}">Sign Up</a>
     </div>
 {% endif %}
 
-</body>
-</html>
+
+
+Nav Bar
+
+{% block content %} {% endblock %}

@@ -15,6 +15,13 @@ class Guest(models.Model):
     def __str__(self):
         return self.user.username
 
+@ receiver(post_save, sender=User)
+def create_guest(sender, instance, created, **kwargs):
+    if created:
+        Guest.objects.create(user=instance)
+# when user object is created, create a Guest instance
+
+
 
 class Post(models.Model):
     title: models.CharField(max_length=150)
@@ -24,7 +31,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.user
 
     class Meta:
         ordering = ['created_at']
