@@ -13,12 +13,9 @@ class Guest(models.Model):
     rsvp = models.BooleanField(default=False)
 
 
-
-
-
 class Post(models.Model):
     title: models.CharField(max_length=150)
     body: models.TextField(max_length=999)
     created_at = models.DateTimeField(auto_now_add=True)
-    image = ImageField
+    image = ImageField(upload_to='media/')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
