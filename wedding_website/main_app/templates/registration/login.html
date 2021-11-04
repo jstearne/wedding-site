@@ -1,10 +1,32 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1 class="title">Log In</h1>
-<form method="post" action="{% url 'login' %}">
-  {% csrf_token %} {{ form.as_p }}
-  <input type="submit" class="btn" value="login" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
+<body class="login-page">
+<h1 class="title" id="login-title">Log In</h1>
+<main class="form-signin">
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="form-floating">
+            <input type="text" name="username" class="form-control" required id="id_username" id="floatingInput"
+                placeholder="Username">
+            
 
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" name="password" id="floatingPassword" required id="id_password"
+                placeholder="Password">
+            
+        </div>
+
+        <button type="submit" class="w-100 btn btn-lg btn-primary" value="login">Submit</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+
+    </form>
+</main>
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<p style="color: red; text-align: center;">{{ error }}</p>
+{% endfor %}
+{% endif %}
+
+</body>
 {% endblock %}

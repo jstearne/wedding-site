@@ -14,17 +14,6 @@ from django.utils.decorators import method_decorator
 class Home(TemplateView):
     template_name = "home.html"
 
-class Guestbook(TemplateView): #needs to be refactored into CRUD
-    template_name = "guestbook.html"
-
-class Accommodations(TemplateView): # good as is
-    template_name = "accommodations.html"
-
-class Schedule(TemplateView): #  good as is
-    template_name = "schedule.html"
-
-class Photos(TemplateView): # good as is
-    template_name = "photos.html"
 
 class Signup(View):
         # show a form to fill out
@@ -43,3 +32,23 @@ class Signup(View):
             context = {"form": form}
             return render(request, "registration/signup.html", context)
 
+
+class Login(TemplateView):
+    template_name = "login.html"
+
+
+
+class Guestbook(TemplateView): #needs to be refactored into CRUD
+    template_name = "guestbook.html"
+
+
+class Accommodations(TemplateView): # good as is
+    template_name = "accommodations.html"
+
+
+class Schedule(TemplateView): #  good as is
+    template_name = "schedule.html"
+
+
+class Photos(TemplateView): # good as is
+    template_name = "photos.html"

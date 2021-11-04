@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block content %}
+
+<body class="signup-page">
+
+    <h1 class="title" id="signup-title">Sign Up</h1>
+    <main class="form-signin">
+        <form method="post" action="{% url 'signup' %}">
+            {% csrf_token %}
+
+            <div class="form-floating">
+
+                <input type="text" name="username" class="form-control" autofocus required id="id_username"
+                    id="floatingInput" placeholder="Username">
+                
+
+            </div>
+            <div class="form-floating">
+
+                <input type="email" name="email" class="form-control" required id="id_email" id="floatingInput"
+                    placeholder="E-mail">
+                
+
+            </div>
+            <div class="form-floating">
+
+                <input type="password" class="form-control" name="password1" id="floatingPassword"
+                    autocomplete="new-password" required id="id_password1" placeholder="Password">
+                
+            </div>
+            <div class="form-floating">
+
+                <input type="password" class="form-control" name="password2" id="floatingPassword"
+                    autocomplete="new-password" required id="id_password2" placeholder="Password">
+               
+            </div>
+
+            <button type="submit" class="w-100 btn btn-lg btn-primary" value="Sign Up">Submit</button>
+            <input type="hidden" name="next" value="{{ next }}" />
+
+        </form>
+        <div class="signup-error" style="color: red; text-align: center;">
+            {{ form.errors }}
+        </div>
+
+    </main>
+</body>
+    {% endblock %}
