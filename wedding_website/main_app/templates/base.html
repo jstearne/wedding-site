@@ -1,9 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{% static 'styles/main.css' %}" rel="stylesheet"  /> <!--Unused-->
+  <script src="{% static 'scripts/main.js' %}" defer></script> <!--Unused-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<!--Bootstrap on every page that has base.html extension-->
+  <title>Wedding Site</title>
+</head>
+
+<nav> 
 {% if user.is_authenticated %}
     <div class="navbar-menu navbar-end">
-        <span class="navbar-item">Welcome: {{user.username}}</span>
-        <a class="navbar-item" href="/artists">Artists</a>
+        <span class="navbar-item">Logged in as: {{user.username}}</span><br>
         <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
+        <ul>
+            <li><a class="navbar-item" href="{% url 'guestbook' %}">Guestbook</a></li>
+            <li><a class="navbar-item" href="{% url 'schedule' %}">Schedule</a></li>
+            <li><a class="navbar-item" href="{% url 'accommodations' %}">Accommodations</a></li>
+            <li><a class="navbar-item" href="{% url 'photos' %}">Photos</a></li>
+        </ul>
     </div>
 {% else %}
     <div class="navbar-menu navbar-end">
@@ -13,8 +33,24 @@
     </div>
 {% endif %}
 
+<style>
+    nav{
+        background-color: lightgreen;
+    }
+    h1 {
+        text-align: center;
+        margin: 75px;
+    }
+    h3 {
+        text-align: center;
+    }
+</style>
 
-
-Nav Bar
+<!--Website content for nav-->
+<h1>Joellen & Jared</h1>
+<h3>07.15.2021</h3>
+<h3>Corgis! Wine! Heaven?</h3>
+<br>
+</nav>
 
 {% block content %} {% endblock %}
